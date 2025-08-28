@@ -20,5 +20,5 @@ This study analyzes yearly Divvy bike-share data (June 2024 to May 2025) to iden
 
 ## How to access
 
-- **Detailed view:** If you want to see the detailing of my process - involving the organization of the dataframes, cleaning process, codes written and used, results, and suggestions - download bikeshare_jup.html and run it on your browser.
-- **Slides:** If you prefer a summarized version of this case study, focusing on visualizations, results, and suggestions, download bike_share_presentation-en.pptx and run it on your slide presentation software (PowerPoint, Google Slides). I **strongly** recommend using the presentation mode, as the slides have animations that, in preview mode, hide some relevant information.
+- **Detailed view:** If you want to see the detailing of my process - involving the organization of the dataframes, cleaning process, codes written and used, results, and suggestions - download *bikeshare_jup.html* and run it on your browser.
+- **Slides:** If you prefer a summarized version of this case study, focusing on visualizations, results, and suggestions, download *bike_share_presentation-en.pptx* and run it on your slide presentation software (PowerPoint, Google Slides). I **strongly** recommend using the presentation mode, as the slides have animations that, in preview mode, hide some relevant information.
