@@ -1,5 +1,5 @@
 # Cyclistic Bike-Share Case Study
-A case study done using Python and Tableau, encompassing 1 year of data, focusing on answering questions and delivering marketing suggestions to a fictional bike-sharing company about user ridership. Study done for the Google Data Analytics Certificate Program.
+A case study done using Python and Tableau, encompassing 1 year of data, focusing on answering questions and delivering marketing suggestions to a fictional bike-sharing company about user ridership. Study done as a capstone project for the Google Data Analytics Certificate Program.
 
 ---
 
