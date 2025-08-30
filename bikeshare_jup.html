@@ -7556,7 +7556,7 @@ a.anchor-link {
 <li>4.3 <a href="#ride-starting-and-ending-times">Ride starting and ending times</a></li>
 <li>4.4 <a href="#average-ride-time-per-day-of-the-week">Average ride time per day of the week</a></li>
 <li>4.5 <a href="#vehicle-preference">Vehicle preference</a></li>
-<li>4.6 <a href="#start-station-preference">Start station preference</a></li>
+<li>4.6 <a href="#station-preference">Station preference</a></li>
 </ul>
 </li>
 <li><a href="#results-and-suggestions">RESULTS AND SUGGESTIONS</a><ul>
@@ -7629,7 +7629,7 @@ a.anchor-link {
 <td style="text-align:left">New columns added to aid analysis</td>
 </tr>
 <tr>
-<td style="text-align:left">Removal of negative duration rides, rides under 1 minute, rides under 3 minutes that start and end at the same station</td>
+<td style="text-align:left">Removal of negative duration rides, rides under 1 minute, ride with null stations, rides under 3 minutes that start and end at the same station</td>
 <td style="text-align:left">Removal of 1,720,118 rows</td>
 </tr>
 <tr>
@@ -8146,9 +8146,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.2.6-Removal-of-negative-duration-rides,-short-rides,-and-rides-without-stations-">3.2.6 Removal of negative duration rides, short rides, and rides without stations <a name="removal-of-negative-duration-rides-short-rides-and-rides-without-stations"></a><a class="anchor-link" href="#3.2.6-Removal-of-negative-duration-rides,-short-rides,-and-rides-without-stations-">¶</a></h3><p>In every month of the original dataframes, one could notice the presence of extremely short rides, many of them under one minute, alongside rides that didn’t start and/or end in any station whatsoever. Specifically in November, there were also rides with negative duration.</p>
+<h3 id="3.2.6-Removal-of-negative-duration-rides,-short-rides,-rides-without-stations-">3.2.6 Removal of negative duration rides, short rides, rides without stations <a name="removal-of-negative-duration-rides-short-rides-and-rides-without-stations"></a><a class="anchor-link" href="#3.2.6-Removal-of-negative-duration-rides,-short-rides,-rides-without-stations-">¶</a></h3><p>In every month of the original dataframes, one could notice the presence of extremely short rides, many of them under one minute, alongside rides that didn’t start and/or end in any station whatsoever. After adding the ride durations, specifically in November, there were also rides with negative duration.</p>
 <p>Upon researching how bikeshare companies such as <a href="https://divvybikes.com/system-data">Divvy</a> and <a href="https://citibikenyc.com/system-data">CitiBike</a> share their publicly available data, it is stated that they remove maintenance trips and also any trips under 60 seconds. As it is a standard for bike-sharing data, we adopted the same approach to this study case, removing any trips under 60 seconds to ensure that extremely short trips do not skew the averages or inflate the riding numbers. Since the public data used for this case study does not differentiate staff from casual riders and members, we cannot intentionally filter out "maintenance trips" made by the former group. At the same time, we also chose to remove trips that started and ended in the same station and lasted under 3 minutes. The reasoning for this is to filter out rides that cover statistically insignificant ground, possible user errors (such as users changing their mind), or the possibility that the user got the bike but noticed that there was a mechanical problem with the vehicle, such as a flat tire, for example.</p>
-<p>Additionally, trips that didn’t have a starting station or an ending station were also eliminated. These records may represent dockless usage, maintenance activities, or data collection errors that fall outside our focus on station-based rider behavior. Retaining them would compromise spatial analysis accuracy, particularly for route planning, station utilization metrics, and geographic trend identification, while offering limited insights into membership conversion patterns.</p>
+<p>Additionally, trips that didn’t have a starting station or an ending station were also eliminated. These records may represent dockless usage, maintenance activities, or data collection errors that fall outside our focus on station-based rider behavior. Retaining them would compromise spatial analysis accuracy, station utilization metrics, and geographic trend identification, while offering limited insights into membership conversion patterns.</p>
 <p>This process resulted in the removal of a total of 1,720,118 rows, which was done using the following code (<strong>short_ride_delete.py</strong>):</p>
 </div>
 </div>
@@ -8261,7 +8261,7 @@ a.anchor-link {
 <p><img alt="Vehicle preference user" src="https://i.ibb.co/HfJ9LdQV/vehicleprefuser.webp"/></p>
 <p>The first graph is in this section, which shows the total amount of rides taken per type of vehicle per month, indicates that users have a stronger preference for classic bicycles instead of electric ones. By comparing it with the second graph, which shows the vehicle preference per type of user, it is clear that both casuals and members have this same preference - in the months with the most riders, the number of rides with classic bikes for both types of users consistently doubles the number of rides of electric bikes.</p>
 <p>Colder months (December to February), are outliers: in them, the number of electric bikes ride is similar to those of classic bikes.</p>
-<h2 id="4.6-Start-station-preference-">4.6 Start station preference <a name="start-station-preference"></a><a class="anchor-link" href="#4.6-Start-station-preference-">¶</a></h2><p><img alt="Casual stations graph" src="https://i.ibb.co/wNByHYtb/casualstartend.webp"/></p>
+<h2 id="4.6-Station-preference-">4.6 Station preference <a name="station-preference"></a><a class="anchor-link" href="#4.6-Station-preference-">¶</a></h2><p><img alt="Casual stations graph" src="https://i.ibb.co/wNByHYtb/casualstartend.webp"/></p>
 <p>The graphs above show the top 15 stations where casuals start and end their rides, respectively. At first glance, it can be noticed that the "Streeter Dr. &amp; Grand Avenue" station is an extremely attractive area, with over 40,000 trips starting and ending there, outshining the second most-used station by around 20,000 trips.</p>
 <p>By looking at the names of these casual-frequented stations, it can be speculated that they are located in touristic/leisure spots: "Lake Shore" probably points to Lake Michigan, one of the Five Great Lakes and the only one located entirely within American soil. A great deal of casual-favored stations receive the same name as the attractions which neighbor them: "Millennium Park", "Dusable Harbor", "Montrose Harbor", "Shedd Aquarium", "Theater on the Lake", "Adler Planetarium", "Buckingham Fountain", and "Field Museum", reinforcing their touristic value, differently from stations that are named after the intersections where they are located. By visualizing the surroundings of these stations in Google Maps, we noticed that they are all located next to parks, hotels, malls, museums, and bodies of water - predominantly touristic and leisure areas.</p>
 <p><img alt="Member stations graph" src="https://i.ibb.co/m5yNhSk9/memberstartend.webp"/></p>
